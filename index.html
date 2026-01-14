@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Risk Predictor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header with theme toggle -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="logo">AttendanceIQ</h1>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <span class="theme-icon">🌙</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main content -->
+        <main class="main-content">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Attendance Risk Predictor</h2>
+                    <p class="card-description">Calculate your attendance risk and see how many classes you can safely miss</p>
+                </div>
+
+                <!-- Input form -->
+                <form id="attendanceForm" class="form">
+                    <div class="input-group">
+                        <label for="attended" class="label">Classes Attended</label>
+                        <input 
+                            type="number" 
+                            id="attended" 
+                            class="input"
+                            placeholder="Enter classes attended"
+                            min="0"
+                            step="1"
+                        >
+                        <span class="input-helper">Total classes you've already attended</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="total" class="label">Total Classes</label>
+                        <input 
+                            type="number" 
+                            id="total" 
+                            class="input"
+                            placeholder="Enter total classes"
+                            min="0"
+                            step="1"
+                        >
+                        <span class="input-helper">Total classes scheduled in the course</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="required" class="label">Required Percentage (%)</label>
+                        <input 
+                            type="number" 
+                            id="required" 
+                            class="input"
+                            placeholder="Enter required percentage"
+                            min="1"
+                            max="100"
+                            step="0.1"
+                        >
+                        <span class="input-helper">Minimum attendance percentage required (1-100%)</span>
+                    </div>
+
+                    <button type="submit" class="button">Calculate Risk</button>
+                </form>
+
+                <!-- Results section -->
+                <div class="results">
+                    <div class="result-item">
+                        <span class="result-label">Current Attendance</span>
+                        <span class="result-value" id="currentAttendance">--</span>
+                        <span class="result-unit">%</span>
+                    </div>
+
+                    <div class="result-item">
+                        <span class="result-label">Classes You Can Miss</span>
+                        <span class="result-value" id="maxClassesToMiss">--</span>
+                        <span class="result-unit">classes</span>
+                    </div>
+
+                    <div class="result-item risk-status">
+                        <span class="result-label">Risk Status</span>
+                        <span class="result-value risk-value" id="riskStatus">--</span>
+                    </div>
+                </div>
+
+                <!-- Detailed breakdown -->
+                <div class="breakdown" id="breakdown" style="display: none;">
+                    <h3 class="breakdown-title">Breakdown</h3>
+                    <div class="breakdown-content">
+                        <div class="breakdown-item">
+                            <span class="breakdown-label">Attendance Rate</span>
+                            <span class="breakdown-value" id="breakdownAttendance">--</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="breakdown-label">Required Rate</span>
+                            <span class="breakdown-value" id="breakdownRequired">--</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="breakdown-label">Margin</span>
+                            <span class="breakdown-value" id="breakdownMargin">--</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Error message -->
+                <div class="error" id="errorMessage" style="display: none;"></div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
