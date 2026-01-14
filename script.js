@@ -1,7 +1,7 @@
 // ============================================
 // Attendance Risk Predictor - JavaScript Logic
 // ============================================
-
+x = 10
 // Theme Management
 class ThemeManager {
   constructor() {
